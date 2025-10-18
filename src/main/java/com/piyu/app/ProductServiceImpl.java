@@ -1,19 +1,21 @@
 package com.piyu.app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@Log4j2
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
@@ -86,5 +88,10 @@ public class ProductServiceImpl implements ProductService {
         Pageable pageable = PageRequest.of(page, size, sortBy);
 
         return productRepository.findAll(spec, pageable);
+    }
+
+    @Scheduled(cron = "${cron.job.expression}")
+    public void healthCheckSchedular(){
+        log.info("App is running...");
     }
 }
