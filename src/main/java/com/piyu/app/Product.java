@@ -15,11 +15,12 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String company;
+    private String size;
     private String model;
     private String type;
     private Long quantity;
-    private Double price;
-    private Double netLandingPrice;
+    private String serialNumber;
+    private Long netLandingPrice;
     private Date createdDate;
     private Date updatedDate;
 

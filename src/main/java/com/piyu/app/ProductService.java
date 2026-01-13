@@ -2,6 +2,9 @@ package com.piyu.app;
 
 import org.springframework.data.domain.Page;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
 
 public interface ProductService {
     void createProduct(ProductDto productDto);
@@ -12,5 +15,7 @@ public interface ProductService {
 
     Product getProduct(Long id);
 
-    Page<Product> getProducts(String type, String search, String sort, int page, int size);
+    Page<Product> getProducts(String type, String search, int page, int size);
+
+    ByteArrayInputStream exportProductsToExcel() throws IOException;
 }
