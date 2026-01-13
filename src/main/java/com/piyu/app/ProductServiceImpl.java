@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     private static final String[] HEADERS = {
-            "ID", "Company", "Size", "Model", "Type", "Quantity", "Net Landing Price", "Created Date", "Updated Date"
+            "ID", "Company", "Size", "Model", "Type", "Quantity", "Serial Number", "Net Landing Price", "Created Date", "Updated Date"
     };
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -130,9 +130,10 @@ public class ProductServiceImpl implements ProductService {
                 row.createCell(3).setCellValue(product.getModel() != null ? product.getModel() : "");
                 row.createCell(4).setCellValue(product.getType() != null ? product.getType() : "");
                 row.createCell(5).setCellValue(product.getQuantity() != null ? product.getQuantity() : 0);
-                row.createCell(6).setCellValue(product.getNetLandingPrice() != null ? product.getNetLandingPrice() : 0);
-                row.createCell(7).setCellValue(product.getCreatedDate() != null ? DATE_FORMAT.format(product.getCreatedDate()) : "");
-                row.createCell(8).setCellValue(product.getUpdatedDate() != null ? DATE_FORMAT.format(product.getUpdatedDate()) : "");
+                row.createCell(6).setCellValue(product.getSerialNumber() != null ? product.getSerialNumber() : "");
+                row.createCell(7).setCellValue(product.getNetLandingPrice() != null ? product.getNetLandingPrice() : 0);
+                row.createCell(8).setCellValue(product.getCreatedDate() != null ? DATE_FORMAT.format(product.getCreatedDate()) : "");
+                row.createCell(9).setCellValue(product.getUpdatedDate() != null ? DATE_FORMAT.format(product.getUpdatedDate()) : "");
             }
 
             // Auto-size columns
